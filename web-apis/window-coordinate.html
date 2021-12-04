@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web APIs - Coordinate</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .sticky {
+        position: sticky;
+        top: 10px;
+      }
+      .box {
+        background-color: bisque;
+        width: 250px;
+        height: 250px;
+        margin: 10px;
+      }
+      .target {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sticky">
+      <button id="btn100y">Scroll by 100px(y)</button>
+      <button id="btn100x">Scroll by 100px(x)</button>
+      <button id="btnTarget">Scroll into target</button>
+    </div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box target"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </body>
+  <script>
+    const target = document.querySelector('.target');
+    target.addEventListener('click', (event) => {
+      console.log(target.getBoundingClientRect());
+      console.log(`client: ${event.clientX}, ${event.clientY}`);
+      console.log(`page: ${event.pageX}, ${event.pageY}`);
+    });
+    const btn100y = document.getElementById('btn100y');
+    btn100y.addEventListener('click', (event) => {
+      window.scroll(event.pageX, event.pageY + 100);
+    });
+    const btn100x = document.getElementById('btn100x');
+    btn100x.addEventListener('click', (event) => {
+      window.scroll(event.pageX + 100, event.pageY);
+    });
+    const btnTarget = document.getElementById('btnTarget');
+    btnTarget.addEventListener('click', (event) => {
+      const targetDOMRect = target.getBoundingClientRect();
+      console.log(targetDOMRect);
+      window.scrollBy(targetDOMRect.x, targetDOMRect.y);
+    });
+  </script>
+</html>

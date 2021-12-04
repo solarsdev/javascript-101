@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web APIs - Window Size</title>
+  </head>
+  <body>
+    <p style="background-color: lightpink">
+      <span>window.screen: </span><span id="screen"></span><br />
+      <span>window.outer: </span><span id="outer"></span><br />
+      <span>window.inner: </span><span id="inner"></span><br />
+      <span>document.Element.clientWidth: </span><span id="documentClientWidth"></span>
+    </p>
+  </body>
+  <script>
+    const screen = document.getElementById('screen');
+    const outer = document.getElementById('outer');
+    const inner = document.getElementById('inner');
+    const documentClientWidth = document.getElementById('documentClientWidth');
+
+    const updateSize = () => {
+      screen.innerText = `${window.screen.width}, ${window.screen.height}`;
+      outer.innerText = `${window.outerWidth}, ${window.outerHeight}`;
+      inner.innerText = `${window.innerWidth}, ${window.innerHeight}`;
+      documentClientWidth.innerText = `${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}`;
+    };
+
+    updateSize();
+    window.onresize = updateSize;
+  </script>
+</html>
